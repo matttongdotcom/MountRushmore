@@ -1,0 +1,563 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		1BC390072DF0DB7E003D1281 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1BC38FF12DF0DB76003D1281 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1BC38FF82DF0DB77003D1281;
+			remoteInfo = MountRushmore;
+		};
+		1BC390112DF0DB7E003D1281 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1BC38FF12DF0DB76003D1281 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1BC38FF82DF0DB77003D1281;
+			remoteInfo = MountRushmore;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1BC38FF92DF0DB77003D1281 /* MountRushmore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MountRushmore.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1BC390062DF0DB7E003D1281 /* MountRushmoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MountRushmoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1BC390102DF0DB7E003D1281 /* MountRushmoreUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MountRushmoreUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		1BC38FFB2DF0DB77003D1281 /* MountRushmore */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = MountRushmore;
+			sourceTree = "<group>";
+		};
+		1BC390092DF0DB7E003D1281 /* MountRushmoreTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = MountRushmoreTests;
+			sourceTree = "<group>";
+		};
+		1BC390132DF0DB7E003D1281 /* MountRushmoreUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = MountRushmoreUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1BC38FF62DF0DB77003D1281 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1BC390032DF0DB7E003D1281 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1BC3900D2DF0DB7E003D1281 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1BC38FF02DF0DB76003D1281 = {
+			isa = PBXGroup;
+			children = (
+				1BC38FFB2DF0DB77003D1281 /* MountRushmore */,
+				1BC390092DF0DB7E003D1281 /* MountRushmoreTests */,
+				1BC390132DF0DB7E003D1281 /* MountRushmoreUITests */,
+				1BC38FFA2DF0DB77003D1281 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1BC38FFA2DF0DB77003D1281 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1BC38FF92DF0DB77003D1281 /* MountRushmore.app */,
+				1BC390062DF0DB7E003D1281 /* MountRushmoreTests.xctest */,
+				1BC390102DF0DB7E003D1281 /* MountRushmoreUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1BC38FF82DF0DB77003D1281 /* MountRushmore */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1BC3901A2DF0DB7E003D1281 /* Build configuration list for PBXNativeTarget "MountRushmore" */;
+			buildPhases = (
+				1BC38FF52DF0DB77003D1281 /* Sources */,
+				1BC38FF62DF0DB77003D1281 /* Frameworks */,
+				1BC38FF72DF0DB77003D1281 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				1BC38FFB2DF0DB77003D1281 /* MountRushmore */,
+			);
+			name = MountRushmore;
+			packageProductDependencies = (
+			);
+			productName = MountRushmore;
+			productReference = 1BC38FF92DF0DB77003D1281 /* MountRushmore.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1BC390052DF0DB7E003D1281 /* MountRushmoreTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1BC3901D2DF0DB7E003D1281 /* Build configuration list for PBXNativeTarget "MountRushmoreTests" */;
+			buildPhases = (
+				1BC390022DF0DB7E003D1281 /* Sources */,
+				1BC390032DF0DB7E003D1281 /* Frameworks */,
+				1BC390042DF0DB7E003D1281 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1BC390082DF0DB7E003D1281 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				1BC390092DF0DB7E003D1281 /* MountRushmoreTests */,
+			);
+			name = MountRushmoreTests;
+			packageProductDependencies = (
+			);
+			productName = MountRushmoreTests;
+			productReference = 1BC390062DF0DB7E003D1281 /* MountRushmoreTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		1BC3900F2DF0DB7E003D1281 /* MountRushmoreUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1BC390202DF0DB7E003D1281 /* Build configuration list for PBXNativeTarget "MountRushmoreUITests" */;
+			buildPhases = (
+				1BC3900C2DF0DB7E003D1281 /* Sources */,
+				1BC3900D2DF0DB7E003D1281 /* Frameworks */,
+				1BC3900E2DF0DB7E003D1281 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1BC390122DF0DB7E003D1281 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				1BC390132DF0DB7E003D1281 /* MountRushmoreUITests */,
+			);
+			name = MountRushmoreUITests;
+			packageProductDependencies = (
+			);
+			productName = MountRushmoreUITests;
+			productReference = 1BC390102DF0DB7E003D1281 /* MountRushmoreUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1BC38FF12DF0DB76003D1281 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1640;
+				LastUpgradeCheck = 1640;
+				TargetAttributes = {
+					1BC38FF82DF0DB77003D1281 = {
+						CreatedOnToolsVersion = 16.4;
+					};
+					1BC390052DF0DB7E003D1281 = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = 1BC38FF82DF0DB77003D1281;
+					};
+					1BC3900F2DF0DB7E003D1281 = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = 1BC38FF82DF0DB77003D1281;
+					};
+				};
+			};
+			buildConfigurationList = 1BC38FF42DF0DB76003D1281 /* Build configuration list for PBXProject "MountRushmore" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1BC38FF02DF0DB76003D1281;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 1BC38FFA2DF0DB77003D1281 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1BC38FF82DF0DB77003D1281 /* MountRushmore */,
+				1BC390052DF0DB7E003D1281 /* MountRushmoreTests */,
+				1BC3900F2DF0DB7E003D1281 /* MountRushmoreUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1BC38FF72DF0DB77003D1281 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1BC390042DF0DB7E003D1281 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1BC3900E2DF0DB7E003D1281 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1BC38FF52DF0DB77003D1281 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1BC390022DF0DB7E003D1281 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1BC3900C2DF0DB7E003D1281 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1BC390082DF0DB7E003D1281 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1BC38FF82DF0DB77003D1281 /* MountRushmore */;
+			targetProxy = 1BC390072DF0DB7E003D1281 /* PBXContainerItemProxy */;
+		};
+		1BC390122DF0DB7E003D1281 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1BC38FF82DF0DB77003D1281 /* MountRushmore */;
+			targetProxy = 1BC390112DF0DB7E003D1281 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1BC390182DF0DB7E003D1281 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 8BK36H45S9;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		1BC390192DF0DB7E003D1281 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 8BK36H45S9;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1BC3901B2DF0DB7E003D1281 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8BK36H45S9;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tong.MountRushmore;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1BC3901C2DF0DB7E003D1281 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8BK36H45S9;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tong.MountRushmore;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		1BC3901E2DF0DB7E003D1281 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8BK36H45S9;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tong.MountRushmoreTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MountRushmore.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MountRushmore";
+			};
+			name = Debug;
+		};
+		1BC3901F2DF0DB7E003D1281 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8BK36H45S9;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tong.MountRushmoreTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MountRushmore.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MountRushmore";
+			};
+			name = Release;
+		};
+		1BC390212DF0DB7E003D1281 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8BK36H45S9;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tong.MountRushmoreUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MountRushmore;
+			};
+			name = Debug;
+		};
+		1BC390222DF0DB7E003D1281 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8BK36H45S9;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tong.MountRushmoreUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MountRushmore;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1BC38FF42DF0DB76003D1281 /* Build configuration list for PBXProject "MountRushmore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1BC390182DF0DB7E003D1281 /* Debug */,
+				1BC390192DF0DB7E003D1281 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1BC3901A2DF0DB7E003D1281 /* Build configuration list for PBXNativeTarget "MountRushmore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1BC3901B2DF0DB7E003D1281 /* Debug */,
+				1BC3901C2DF0DB7E003D1281 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1BC3901D2DF0DB7E003D1281 /* Build configuration list for PBXNativeTarget "MountRushmoreTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1BC3901E2DF0DB7E003D1281 /* Debug */,
+				1BC3901F2DF0DB7E003D1281 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1BC390202DF0DB7E003D1281 /* Build configuration list for PBXNativeTarget "MountRushmoreUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1BC390212DF0DB7E003D1281 /* Debug */,
+				1BC390222DF0DB7E003D1281 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1BC38FF12DF0DB76003D1281 /* Project object */;
+}
