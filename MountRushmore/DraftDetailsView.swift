@@ -19,14 +19,12 @@ struct DraftDetailsView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             // Header: Draft Name and Topic
-            VStack(alignment: .leading, spacing: 4) {
-                Text(viewState.draftName)
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                Text(viewState.topic)
-                    .font(.title2)
-                    .foregroundColor(.secondary)
-            }
+            DraftHeaderView(
+                viewState: DraftHeaderViewState(
+                    draftName: viewState.draftName,
+                    draftTopic: viewState.topic
+                )
+            )
 
             // Sharable Link
             VStack(alignment: .leading) {
