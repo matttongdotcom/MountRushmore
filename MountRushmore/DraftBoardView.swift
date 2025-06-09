@@ -3,6 +3,9 @@ import SwiftUI
 // MARK: - ViewState
 
 struct DraftBoardViewState: Hashable {
+    let draftName: String
+    let draftTopic: String
+    let currentPick: String
     let drafters: [DrafterPicksViewState]
 }
 
@@ -16,6 +19,12 @@ struct DraftBoardView: View {
     var body: some View {
         VStack {
             VStack(spacing: 10) {
+                DraftHeaderView(
+                    viewState: DraftHeaderViewState(
+                        draftName: viewState.draftName,
+                        draftTopic: viewState.draftTopic
+                    )
+                )
                 TextField("Enter draft pick", text: $draftPick)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                 
@@ -29,13 +38,18 @@ struct DraftBoardView: View {
                 .cornerRadius(10)
             }.padding()
             Spacer()
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 15) {
-                    ForEach(viewState.drafters, id: \.self) { drafterState in
-                        DrafterPicksView(viewState: drafterState)
+            VStack {
+                Text("Current Pick: \(viewState.currentPick)")
+                    .font(.title2)
+                    .foregroundColor(.secondary)
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 15) {
+                        ForEach(viewState.drafters, id: \.self) { drafterState in
+                            DrafterPicksView(viewState: drafterState)
+                        }
                     }
+                    .padding()
                 }
-                .padding()
             }
         }
         .navigationTitle("Draft Board")
@@ -47,6 +61,9 @@ struct DraftBoardView: View {
 #if DEBUG
 extension DraftBoardViewState {
     static let sample = DraftBoardViewState(
+        draftName: "Juice Crew Draft 2025",
+        draftTopic: "Best Desserts",
+        currentPick: "Matt",
         drafters: [
             .init(drafterName: "Team A", picks: ["Pick 1A", "Pick 2A", "Pick 3A"], isCurrentTurn: false),
             .init(drafterName: "Team B", picks: ["Pick 1B", "Pick 2B", "Pick 3B"], isCurrentTurn: true),
