@@ -11,7 +11,7 @@ import SwiftUI
 struct MountRushmoreApp: App {
     var body: some Scene {
         WindowGroup {
-            DraftBoardView(viewState: .sample)
+            StartScreen()
         }
     }
 }

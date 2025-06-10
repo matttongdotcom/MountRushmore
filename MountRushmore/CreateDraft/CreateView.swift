@@ -1,8 +1,10 @@
 import SwiftUI
 
 struct CreateView: View {
+
     @State private var draftName: String = ""
     @State private var topic: String = ""
+    var submitDraftInfo: (String, String) -> Void = { _, _ in }
 
     var body: some View {
         VStack {
@@ -25,7 +27,7 @@ struct CreateView: View {
             let isButtonDisabled = draftName.isEmpty || topic.isEmpty
             
             Button(action: {
-                // Action for the CREATE button
+                submitDraftInfo(draftName, topic)
             }) {
                 Text("CREATE")
                     .frame(maxWidth: .infinity)
@@ -38,7 +40,6 @@ struct CreateView: View {
             .disabled(isButtonDisabled)
         }
         .padding()
-        .navigationTitle("New Draft")
     }
 }
 
