@@ -7,7 +7,7 @@ struct StartScreen: View {
                 Spacer()
                 HStack {
                     Spacer()
-                    NavigationLink(destination: CreateView()) {
+                    NavigationLink(destination: CreateDraftScreen(viewModel: CreateViewModel())) {
                         HStack {
                             Image(systemName: "plus")
                             Text("BEGIN")
