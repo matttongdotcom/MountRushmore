@@ -10,21 +10,19 @@ import SwiftUI
 struct CreateDraftScreen: View {
     
     @ObservedObject var viewModel: CreateViewModel
-    @State private var navigateToNextScreen = false
+    @Binding var path: [NavigationRoute]
     
     var body: some View {
-        NavigationView {
-            CreateView(
-                submitDraftInfo: { name, topic in
-                    viewModel.send(.createButtonTapped(draftName: name, draftTopic: topic))
-                }
-            )
-            .navigationTitle("New Draft")
-        }
+        CreateView(
+            submitDraftInfo: { name, topic in
+                viewModel.send(.createButtonTapped(draftName: name, draftTopic: topic))
+            }
+        )
+        .navigationTitle("New Draft")
         .onReceive(viewModel.$state) { state in
             print("onReceive: \(state)")
             if case .success = state.creationStatus {
-                navigateToNextScreen = true
+                path.append(.draftDetails)
             }
         }
     }

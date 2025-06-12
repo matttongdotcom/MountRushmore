@@ -1,13 +1,20 @@
 import SwiftUI
 
+enum NavigationRoute: Hashable {
+    case createDraft
+    case draftDetails
+}
+
 struct StartScreen: View {
+    @State private var path = [NavigationRoute]()
+
     var body: some View {
-        NavigationView {
+        NavigationStack(path: $path) {
             VStack {
                 Spacer()
                 HStack {
                     Spacer()
-                    NavigationLink(destination: CreateDraftScreen(viewModel: CreateViewModel())) {
+                    NavigationLink(value: NavigationRoute.createDraft) {
                         HStack {
                             Image(systemName: "plus")
                             Text("BEGIN")
@@ -22,6 +29,14 @@ struct StartScreen: View {
                 Spacer()
             }
             .background(Color(.systemBackground))
+            .navigationDestination(for: NavigationRoute.self) { route in
+                switch route {
+                case .createDraft:
+                    CreateDraftScreen(viewModel: CreateViewModel(), path: $path)
+                case .draftDetails:
+                    DraftDetailsScreen()
+                }
+            }
         }
     }
 }
