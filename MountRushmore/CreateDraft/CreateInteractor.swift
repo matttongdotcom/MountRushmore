@@ -9,17 +9,28 @@ enum CreateDomainAction {
 struct CreateDomainState {
     var draftName: String = ""
     var topic: String = ""
+    var creationStatus: CreationStatus = .idle
+}
+
+enum CreationStatus {
+    case idle
+    case success
+    case failure(Error)
 }
 
 /// The Interactor contains the core business logic.
 /// It receives actions and produces a new domain state.
 struct CreateInteractor {
     func interact(_ action: CreateDomainAction) async -> CreateDomainState {
-        // In a real application, this would contain logic like:
-        // - Fetching data from a repository.
-        // - Saving data.
-        // - Performing calculations.
-        print("Interactor received action: \(action)")
-        return CreateDomainState() // Returning a dummy state for now.
+        switch action {
+        case .createDraft(let draftName, let draftTopic):
+            // In a real application, this would contain logic like:
+            // - Fetching data from a repository.
+            // - Saving data.
+            // - Performing calculations.
+            print("Interactor received action: \(action)")
+            // Simulate a successful creation.
+            return CreateDomainState(draftName: draftName, topic: draftTopic, creationStatus: .success)
+        }
     }
 } 
