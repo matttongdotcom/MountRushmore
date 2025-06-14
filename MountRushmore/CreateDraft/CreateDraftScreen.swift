@@ -18,7 +18,7 @@ struct CreateDraftScreen: View {
                 viewModel.send(.createButtonTapped(draftName: name, draftTopic: topic))
             }
         )
-        .navigationTitle("New Draft")
+        .navigationTitle("createDraft.navigationTitle")
         .onReceive(viewModel.$state) { state in
             print("onReceive: \(state)")
             if case .success = state.creationStatus {

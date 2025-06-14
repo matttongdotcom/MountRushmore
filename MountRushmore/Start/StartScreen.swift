@@ -24,7 +24,7 @@ struct StartScreen: View {
 
                 Spacer()
             }
-            .navigationTitle("Welcome")
+            .navigationTitle("start.navigationTitle")
             .navigationBarTitleDisplayMode(.inline)
             .navigationDestination(for: NavigationRoute.self) { route in
                 switch route {
