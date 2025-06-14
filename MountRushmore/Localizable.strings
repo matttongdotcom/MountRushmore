@@ -1,0 +1,33 @@
+/* 
+  Localizable.strings
+  MountRushmore
+*/
+
+// MARK: - StartScreen
+"start.navigationTitle" = "Welcome";
+
+// MARK: - LoggedOutView
+"loggedOut.title" = "Welcome to Mount Rushmore";
+"loggedOut.subtitle" = "Please sign in to continue";
+"loggedOut.loginButton" = "Login / Sign Up";
+
+// MARK: - LoggedInView
+/* Welcome message shown to a logged in user. Contains a placeholder for their email. */
+"loggedIn.title" = "Welcome, %@";
+"loggedIn.continueButton" = "Continue to Draft";
+"loggedIn.signOutButton" = "Sign Out";
+
+// MARK: - CreateDraft
+"createDraft.navigationTitle" = "New Draft";
+"createDraft.nameHeader" = "Draft Name";
+"createDraft.namePlaceholder" = "Enter draft name e.g. Draft #1";
+"createDraft.topicHeader" = "Topic";
+"createDraft.topicPlaceholder" = "Enter topic e.g. Desserts";
+"createDraft.createButton" = "CREATE";
+
+// MARK: - DraftDetails
+"draftDetails.navigationTitle" = "Draft Details";
+"draftDetails.shareLinkHeader" = "SHARE LINK";
+"draftDetails.copiedBanner" = "Copied!";
+"draftDetails.participantsHeader" = "PARTICIPANTS";
+"draftDetails.startButton" = "START"; 

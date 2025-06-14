@@ -24,7 +24,7 @@ struct StartScreen: View {
 
                 Spacer()
             }
-            .navigationTitle("Welcome")
+            .navigationTitle("start.navigationTitle")
             .navigationBarTitleDisplayMode(.inline)
             .navigationDestination(for: NavigationRoute.self) { route in
                 switch route {
@@ -41,8 +41,8 @@ struct StartScreen: View {
             }
             // This is a key part: when the auth state changes to logged in,
             // and the sheet is showing, we dismiss it.
-            .onChange(of: authState.isLoggedIn) { isLoggedIn in
-                if isLoggedIn {
+            .onChange(of: authState.isLoggedIn) { _, newValue in
+                if newValue {
                     showingLoginScreen = false
                 }
             }

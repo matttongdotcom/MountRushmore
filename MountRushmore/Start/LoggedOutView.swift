@@ -5,10 +5,10 @@ struct LoggedOutView: View {
 
     var body: some View {
         VStack {
-            Text("Welcome to Mount Rushmore")
+            Text("loggedOut.title")
                 .font(.title)
 
-            Text("Please sign in to continue")
+            Text("loggedOut.subtitle")
                 .font(.subheadline)
                 .foregroundColor(.secondary)
                 .padding(.bottom, 20)
@@ -16,7 +16,7 @@ struct LoggedOutView: View {
             Button(action: {
                 showingLoginScreen = true
             }) {
-                Text("Login / Sign Up")
+                Text("loggedOut.loginButton")
                     .font(.headline)
                     .foregroundColor(.white)
                     .padding()

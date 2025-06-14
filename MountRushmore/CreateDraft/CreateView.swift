@@ -9,15 +9,15 @@ struct CreateView: View {
     var body: some View {
         VStack {
             VStack(alignment: .leading) {
-                Text("Draft Name")
+                Text("createDraft.nameHeader")
                     .font(.headline)
-                TextField("Enter draft name e.g. Draft #1", text: $draftName)
+                TextField("createDraft.namePlaceholder", text: $draftName)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     
-                Text("Topic")
+                Text("createDraft.topicHeader")
                     .font(.headline)
                     .padding(.top)
-                TextField("Enter topic e.g. Desserts", text: $topic)
+                TextField("createDraft.topicPlaceholder", text: $topic)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
             }
             .padding()
@@ -29,7 +29,7 @@ struct CreateView: View {
             Button(action: {
                 submitDraftInfo(draftName, topic)
             }) {
-                Text("CREATE")
+                Text("createDraft.createButton")
                     .frame(maxWidth: .infinity)
                     .padding()
                     .background(isButtonDisabled ? Color.gray : Color.blue)
