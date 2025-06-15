@@ -19,7 +19,7 @@ struct DraftDetailsView: View {
             viewModel.send(.fetchDraftDetails)
         }
         .padding()
-        .navigationTitle("Draft Details")
+        .navigationTitle("draftDetails.navigationTitle")
     }
     
     private var content: some View {
@@ -34,7 +34,7 @@ struct DraftDetailsView: View {
 
             // Sharable Link
             VStack(alignment: .leading) {
-                Text("SHARE LINK").font(.subheadline).foregroundColor(.secondary)
+                Text("draftDetails.shareLinkHeader").font(.subheadline).foregroundColor(.secondary)
                 Button(action: copyLink) {
                     HStack {
                         Image(systemName: "link")
@@ -42,7 +42,7 @@ struct DraftDetailsView: View {
                             .underline()
                         Spacer()
                         if justCopied {
-                            Text("Copied!")
+                            Text("draftDetails.copiedBanner")
                                 .font(.caption)
                                 .foregroundColor(.secondary)
                                 .transition(.opacity)
@@ -55,7 +55,7 @@ struct DraftDetailsView: View {
 
             // Participants List
             VStack(alignment: .leading) {
-                Text("PARTICIPANTS")
+                Text("draftDetails.participantsHeader")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
                 
@@ -71,7 +71,7 @@ struct DraftDetailsView: View {
             Button(action: {
                 // Action for the START button
             }) {
-                Text(viewModel.state.ctaText)
+                Text("draftDetails.startButton")
                     .fontWeight(.bold)
                     .frame(maxWidth: .infinity)
                     .padding()

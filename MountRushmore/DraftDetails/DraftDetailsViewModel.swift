@@ -16,11 +16,7 @@ class DraftDetailsViewModel: ObservableObject {
         self.interactor = interactor
         self.state = reducer.reduce(domainState: DraftDetailsDomainState(isLoading: true)) // Initial state
         
-        viewEventSubject
-            .sink { [weak self] event in
-                self?.processEvent(event)
-            }
-            .store(in: &cancellables)
+        setupPipeline()
     }
 
     /// Triggers a view event.
@@ -28,14 +24,22 @@ class DraftDetailsViewModel: ObservableObject {
         viewEventSubject.send(event)
     }
     
-    private func processEvent(_ event: DraftDetailsViewEvent) {
-        Task {
-            let action = eventToAction(event: event)
-            let domainState = await interactor.interact(action)
-            await MainActor.run {
-                self.state = self.reducer.reduce(domainState: domainState)
+    private func setupPipeline() {
+        // This is the main reactive pipeline.
+        // It connects the stream of view events to the interactor and back to the view state.
+        let domainActionStream = viewEventSubject.map(eventToAction)
+        
+        let domainStateStream = interactor.interactV2(
+            upstream: domainActionStream
+        )
+
+        domainStateStream
+            .map { domainState in
+                // For each new domain state from the interactor, we reduce it to a view state.
+                return self.reducer.reduce(domainState: domainState)
             }
-        }
+            .receive(on: DispatchQueue.main) // Ensure UI updates happen on the main thread.
+            .assign(to: &$state)
     }
     
     private func eventToAction(event: DraftDetailsViewEvent) -> DraftDetailsDomainAction {
@@ -59,4 +63,4 @@ struct DraftDetailsViewState {
     var participants: [String] = []
     var ctaText: String = ""
     var isLoading: Bool = true
-} 
+}
