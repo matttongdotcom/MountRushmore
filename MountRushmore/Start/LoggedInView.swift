@@ -24,11 +24,7 @@ struct LoggedInView: View {
                 .padding()
                 
                 Button("loggedIn.signOutButton", action: {
-                    do {
-                        try Auth.auth().signOut()
-                    } catch {
-                        print("Error signing out: \(error.localizedDescription)")
-                    }
+                    authState.signOut()
                 })
                 .buttonStyle(.bordered)
                 .tint(.red)
