@@ -21,8 +21,8 @@ struct CreateDraftScreen: View {
         .navigationTitle("createDraft.navigationTitle")
         .onReceive(viewModel.$state) { state in
             print("onReceive: \(state)")
-            if case .success = state.creationStatus {
-                path.append(.draftDetails)
+            if case .success(let draft) = state.creationStatus {
+                path.append(.draftDetails(draftId: draft.id))
             }
         }
     }

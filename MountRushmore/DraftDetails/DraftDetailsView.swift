@@ -5,6 +5,7 @@ import SwiftUI
 struct DraftDetailsView: View {
     @StateObject private var viewModel = DraftDetailsViewModel()
     @State private var justCopied: Bool = false
+    let draftId: String
 
     var body: some View {
         VStack {
@@ -16,7 +17,7 @@ struct DraftDetailsView: View {
             }
         }
         .onAppear {
-            viewModel.send(.fetchDraftDetails)
+            viewModel.send(.fetchDraftDetails(draftId: draftId))
         }
         .padding()
         .navigationTitle("draftDetails.navigationTitle")
@@ -99,6 +100,6 @@ struct DraftDetailsView: View {
 
 #Preview {
     NavigationView {
-        DraftDetailsView()
+        DraftDetailsView(draftId: "123")
     }
 } 
