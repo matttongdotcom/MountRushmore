@@ -1,10 +1,5 @@
 import Foundation
 
-struct CreateDraftRequest: Encodable {
-    let draftName: String
-    let topic: String
-}
-
 /// Actions that are sent to the Interactor. These represent business logic operations.
 enum CreateDomainAction {
     case createDraft(draftName: String, draftTopic: String)
@@ -19,7 +14,7 @@ struct CreateDomainState {
 
 enum CreationStatus {
     case idle
-    case success
+    case success(Draft)
     case failure(Error)
 }
 
@@ -36,8 +31,8 @@ struct CreateInteractor {
         switch action {
         case .createDraft(let draftName, let draftTopic):
             do {
-                try await repository.createDraft(draftName: draftName, topic: draftTopic)
-                return CreateDomainState(draftName: draftName, topic: draftTopic, creationStatus: .success)
+                let draft = try await repository.createDraft(draftName: draftName, topic: draftTopic)
+                return CreateDomainState(draftName: draftName, topic: draftTopic, creationStatus: .success(draft))
             } catch {
                 return CreateDomainState(draftName: draftName, topic: draftTopic, creationStatus: .failure(error))
             }

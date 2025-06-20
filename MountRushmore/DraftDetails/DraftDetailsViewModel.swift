@@ -4,17 +4,22 @@ import Combine
 
 // MARK: - View Model
 
-class DraftDetailsViewModel: ObservableObject {
-    private var interactor: DraftDetailsInteractor
-    private let reducer = DraftDetailsViewStateReducer.self
+final class DraftDetailsViewModel: ObservableObject {
     @Published private(set) var state: DraftDetailsViewState
+    private let interactor: DraftDetailsInteractor
+    let draftId: String
 
     private let viewEventSubject = PassthroughSubject<DraftDetailsViewEvent, Never>()
     private var cancellables = Set<AnyCancellable>()
 
-    init(interactor: DraftDetailsInteractor = DraftDetailsInteractor()) {
+    init(
+        initialState: DraftDetailsViewState = .initial,
+        interactor: DraftDetailsInteractor = DraftDetailsInteractor(),
+        draftId: String
+    ) {
+        self.state = initialState
         self.interactor = interactor
-        self.state = reducer.reduce(domainState: DraftDetailsDomainState(isLoading: true)) // Initial state
+        self.draftId = draftId
         
         setupPipeline()
     }
@@ -36,7 +41,7 @@ class DraftDetailsViewModel: ObservableObject {
         domainStateStream
             .map { domainState in
                 // For each new domain state from the interactor, we reduce it to a view state.
-                return self.reducer.reduce(domainState: domainState)
+                return self.reduce(domainState: domainState)
             }
             .receive(on: DispatchQueue.main) // Ensure UI updates happen on the main thread.
             .assign(to: &$state)
@@ -46,6 +51,30 @@ class DraftDetailsViewModel: ObservableObject {
         switch event {
         case .fetchDraftDetails:
             return .fetchDraftDetails
+        }
+    }
+
+    // MARK: - Reducer
+
+    static func reduce(
+        _ state: DraftDetailsViewState,
+        _ action: DraftDetailsDomainAction
+    ) -> DraftDetailsViewState {
+        switch action {
+        case .initial:
+            return .initial
+        case .loading:
+            var newState = state
+            newState.isLoading = true
+            return newState
+        case .loaded(let draftName, let topic, let link, let participants):
+            return DraftDetailsViewState(
+                isLoading: false,
+                draftName: draftName,
+                topic: topic,
+                link: link,
+                participants: participants
+            )
         }
     }
 }
