@@ -3,14 +3,9 @@ import SwiftUI
 // MARK: - View
 
 struct DraftDetailsView: View {
-    @StateObject private var viewModel: DraftDetailsViewModel
+    @StateObject private var viewModel = DraftDetailsViewModel()
     @State private var justCopied: Bool = false
     let draftId: String
-
-    init(draftId: String) {
-        self.draftId = draftId
-        _viewModel = StateObject(wrappedValue: DraftDetailsViewModel(draftId: draftId))
-    }
 
     var body: some View {
         VStack {
@@ -22,7 +17,7 @@ struct DraftDetailsView: View {
             }
         }
         .onAppear {
-            viewModel.send(.fetchDraftDetails)
+            viewModel.send(.fetchDraftDetails(draftId: draftId))
         }
         .padding()
         .navigationTitle("draftDetails.navigationTitle")

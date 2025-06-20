@@ -3,18 +3,18 @@ import Combine
 
 /// Actions that are sent to the Interactor. These represent business logic operations.
 enum DraftDetailsDomainAction {
-    case fetchDraftDetails
+    case fetchDraftDetails(draftId: String)
 }
 
 /// A struct representing the state of the application's domain.
 struct DraftDetailsDomainState {
-    var draftName: String = ""
-    var topic: String = ""
-    var link: String = ""
-    var participants: [String] = []
-    var ctaText: String = ""
-    var isLoading: Bool = false
-    // We can add more properties as needed, e.g., the list of faces.
+    var loadingState: LoadingState = .idle
+
+    enum LoadingState {
+        case idle
+        case loading
+        case loaded(draftName: String, topic: String, link: String, participants: [String])
+    }
 }
 
 /// The Interactor contains the core business logic.
@@ -49,20 +49,19 @@ struct DraftDetailsInteractor {
     /// The core business logic is encapsulated in this private async function.
     private func performAction(_ action: DraftDetailsDomainAction) async -> DraftDetailsDomainState {
         switch action {
-        case .fetchDraftDetails:
+        case .fetchDraftDetails(let draftId):
             // In a real app, you would fetch details from a repository.
             // For now, we'll return a sample state.
-            print("Interactor received action: \(action)")
+            print("Interactor received action: \(action) with draftId: \(draftId)")
             // Simulate a network request
             try? await Task.sleep(nanoseconds: 1_000_000_000)
-            return DraftDetailsDomainState(
+            let loadedState = DraftDetailsDomainState.LoadingState.loaded(
                 draftName: "My Awesome Rushmore V2",
                 topic: "Greatest NBA Players",
                 link: "https://example.com/draft/nba",
-                participants: ["LeBron James", "Michael Jordan", "Kareem Abdul-Jabbar", "Magic Johnson"],
-                ctaText: "START DRAFT",
-                isLoading: false
+                participants: ["LeBron James", "Michael Jordan", "Kareem Abdul-Jabbar", "Magic Johnson"]
             )
+            return DraftDetailsDomainState(loadingState: loadedState)
         }
     }
 } 

@@ -7,19 +7,16 @@ import Combine
 final class DraftDetailsViewModel: ObservableObject {
     @Published private(set) var state: DraftDetailsViewState
     private let interactor: DraftDetailsInteractor
-    let draftId: String
 
     private let viewEventSubject = PassthroughSubject<DraftDetailsViewEvent, Never>()
     private var cancellables = Set<AnyCancellable>()
 
     init(
         initialState: DraftDetailsViewState = .initial,
-        interactor: DraftDetailsInteractor = DraftDetailsInteractor(),
-        draftId: String
+        interactor: DraftDetailsInteractor = DraftDetailsInteractor()
     ) {
         self.state = initialState
         self.interactor = interactor
-        self.draftId = draftId
         
         setupPipeline()
     }
@@ -49,31 +46,32 @@ final class DraftDetailsViewModel: ObservableObject {
     
     private func eventToAction(event: DraftDetailsViewEvent) -> DraftDetailsDomainAction {
         switch event {
-        case .fetchDraftDetails:
-            return .fetchDraftDetails
+        case .fetchDraftDetails(let draftId):
+            return .fetchDraftDetails(draftId: draftId)
         }
     }
 
     // MARK: - Reducer
 
-    static func reduce(
-        _ state: DraftDetailsViewState,
-        _ action: DraftDetailsDomainAction
+    func reduce(
+        domainState: DraftDetailsDomainState
     ) -> DraftDetailsViewState {
-        switch action {
-        case .initial:
-            return .initial
+        switch domainState.loadingState {
+        case .idle:
+            var newState = self.state
+            newState.isLoading = false
+            return newState
         case .loading:
-            var newState = state
+            var newState = self.state
             newState.isLoading = true
             return newState
         case .loaded(let draftName, let topic, let link, let participants):
             return DraftDetailsViewState(
-                isLoading: false,
                 draftName: draftName,
                 topic: topic,
                 link: link,
-                participants: participants
+                participants: participants,
+                isLoading: false
             )
         }
     }
@@ -82,7 +80,7 @@ final class DraftDetailsViewModel: ObservableObject {
 // MARK: - View-specific models
 
 enum DraftDetailsViewEvent {
-    case fetchDraftDetails
+    case fetchDraftDetails(draftId: String)
 }
 
 struct DraftDetailsViewState {
@@ -92,4 +90,8 @@ struct DraftDetailsViewState {
     var participants: [String] = []
     var ctaText: String = ""
     var isLoading: Bool = true
+    
+    static var initial: DraftDetailsViewState {
+        DraftDetailsViewState()
+    }
 }
