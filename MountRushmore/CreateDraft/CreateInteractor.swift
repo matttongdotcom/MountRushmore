@@ -1,5 +1,10 @@
 import Foundation
 
+struct CreateDraftRequest: Encodable {
+    let draftName: String
+    let topic: String
+}
+
 /// Actions that are sent to the Interactor. These represent business logic operations.
 enum CreateDomainAction {
     case createDraft(draftName: String, draftTopic: String)
@@ -21,16 +26,21 @@ enum CreationStatus {
 /// The Interactor contains the core business logic.
 /// It receives actions and produces a new domain state.
 struct CreateInteractor {
+    let repository: CreateRepository
+
+    init(repository: CreateRepository = CreateRepository()) {
+        self.repository = repository
+    }
+
     func interact(_ action: CreateDomainAction) async -> CreateDomainState {
         switch action {
         case .createDraft(let draftName, let draftTopic):
-            // In a real application, this would contain logic like:
-            // - Fetching data from a repository.
-            // - Saving data.
-            // - Performing calculations.
-            print("Interactor received action: \(action)")
-            // Simulate a successful creation.
-            return CreateDomainState(draftName: draftName, topic: draftTopic, creationStatus: .success)
+            do {
+                try await repository.createDraft(draftName: draftName, topic: draftTopic)
+                return CreateDomainState(draftName: draftName, topic: draftTopic, creationStatus: .success)
+            } catch {
+                return CreateDomainState(draftName: draftName, topic: draftTopic, creationStatus: .failure(error))
+            }
         }
     }
 } 
