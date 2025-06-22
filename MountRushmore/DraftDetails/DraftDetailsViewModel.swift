@@ -4,17 +4,19 @@ import Combine
 
 // MARK: - View Model
 
-class DraftDetailsViewModel: ObservableObject {
-    private var interactor: DraftDetailsInteractor
-    private let reducer = DraftDetailsViewStateReducer.self
+final class DraftDetailsViewModel: ObservableObject {
     @Published private(set) var state: DraftDetailsViewState
+    private let interactor: DraftDetailsInteractor
 
     private let viewEventSubject = PassthroughSubject<DraftDetailsViewEvent, Never>()
     private var cancellables = Set<AnyCancellable>()
 
-    init(interactor: DraftDetailsInteractor = DraftDetailsInteractor()) {
+    init(
+        initialState: DraftDetailsViewState = .initial,
+        interactor: DraftDetailsInteractor = DraftDetailsInteractor()
+    ) {
+        self.state = initialState
         self.interactor = interactor
-        self.state = reducer.reduce(domainState: DraftDetailsDomainState(isLoading: true)) // Initial state
         
         setupPipeline()
     }
@@ -36,7 +38,7 @@ class DraftDetailsViewModel: ObservableObject {
         domainStateStream
             .map { domainState in
                 // For each new domain state from the interactor, we reduce it to a view state.
-                return self.reducer.reduce(domainState: domainState)
+                return self.reduce(domainState: domainState)
             }
             .receive(on: DispatchQueue.main) // Ensure UI updates happen on the main thread.
             .assign(to: &$state)
@@ -44,8 +46,33 @@ class DraftDetailsViewModel: ObservableObject {
     
     private func eventToAction(event: DraftDetailsViewEvent) -> DraftDetailsDomainAction {
         switch event {
-        case .fetchDraftDetails:
-            return .fetchDraftDetails
+        case .fetchDraftDetails(let draftId):
+            return .fetchDraftDetails(draftId: draftId)
+        }
+    }
+
+    // MARK: - Reducer
+
+    func reduce(
+        domainState: DraftDetailsDomainState
+    ) -> DraftDetailsViewState {
+        switch domainState.loadingState {
+        case .idle:
+            var newState = self.state
+            newState.isLoading = false
+            return newState
+        case .loading:
+            var newState = self.state
+            newState.isLoading = true
+            return newState
+        case .loaded(let draftName, let topic, let link, let participants):
+            return DraftDetailsViewState(
+                draftName: draftName,
+                topic: topic,
+                link: link,
+                participants: participants,
+                isLoading: false
+            )
         }
     }
 }
@@ -53,7 +80,7 @@ class DraftDetailsViewModel: ObservableObject {
 // MARK: - View-specific models
 
 enum DraftDetailsViewEvent {
-    case fetchDraftDetails
+    case fetchDraftDetails(draftId: String)
 }
 
 struct DraftDetailsViewState {
@@ -63,4 +90,8 @@ struct DraftDetailsViewState {
     var participants: [String] = []
     var ctaText: String = ""
     var isLoading: Bool = true
+    
+    static var initial: DraftDetailsViewState {
+        DraftDetailsViewState()
+    }
 }

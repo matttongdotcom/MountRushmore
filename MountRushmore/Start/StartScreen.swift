@@ -3,7 +3,7 @@ import FirebaseAuth
 
 enum NavigationRoute: Hashable {
     case createDraft
-    case draftDetails
+    case draftDetails(draftId: String)
 }
 
 struct StartScreen: View {
@@ -29,10 +29,12 @@ struct StartScreen: View {
             .navigationDestination(for: NavigationRoute.self) { route in
                 switch route {
                 case .createDraft:
-                    // Ensure you pass any required dependencies to your next screens
-                    CreateDraftScreen(viewModel: CreateViewModel(), path: $path)
-                case .draftDetails:
-                    DraftDetailsScreen()
+                    CreateDraftScreen(
+                        viewModel: CreateViewModel(interactor: CreateInteractor()),
+                        path: $path
+                    )
+                case .draftDetails(let draftId):
+                    DraftDetailsScreen(draftId: draftId)
                 }
             }
             .sheet(isPresented: $showingLoginScreen) {
