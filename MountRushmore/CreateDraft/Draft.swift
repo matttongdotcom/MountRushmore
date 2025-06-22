@@ -12,5 +12,8 @@ struct Draft: Decodable, Identifiable {
     let draftId: String
 }
 
-struct Participant: Decodable, Hashable {}
+struct Participant: Decodable, Hashable {
+    let id: String
+    let name: String
+}
 struct Pick: Decodable, Hashable {} 

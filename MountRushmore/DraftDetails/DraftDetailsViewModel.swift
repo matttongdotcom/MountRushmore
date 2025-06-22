@@ -65,12 +65,12 @@ final class DraftDetailsViewModel: ObservableObject {
             var newState = self.state
             newState.isLoading = true
             return newState
-        case .loaded(let draftName, let topic, let link, let participants):
+        case .loaded(let draft):
             return DraftDetailsViewState(
-                draftName: draftName,
-                topic: topic,
-                link: link,
-                participants: participants,
+                draftName: draft.name,
+                topic: draft.topic,
+                link: "https://mountrushmore.app/draft/\(draft.id)",
+                participants: draft.participants.map { $0.name },
                 isLoading: false
             )
         }
