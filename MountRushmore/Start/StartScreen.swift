@@ -30,11 +30,12 @@ struct StartScreen: View {
                 switch route {
                 case .createDraft:
                     CreateDraftScreen(
-                        viewModel: CreateViewModel(interactor: CreateInteractor()),
+                        viewModel: CreateViewModel(interactor: CreateInteractor(authState: authState)),
                         path: $path
                     )
                 case .draftDetails(let draftId):
                     DraftDetailsScreen(draftId: draftId)
+                        .environmentObject(authState)
                 }
             }
             .sheet(isPresented: $showingLoginScreen) {

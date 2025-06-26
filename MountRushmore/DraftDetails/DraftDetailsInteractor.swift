@@ -69,7 +69,7 @@ struct DraftDetailsInteractor {
                     return DraftDetailsDomainState(loadingState: loadedState, hasJoinedDraft: false)
                 }
                 
-                let hasJoined = draft.participants.contains { $0.id == userId }
+                let hasJoined = draft.participants.contains { $0.userId == userId }
                 
                 return DraftDetailsDomainState(loadingState: loadedState, hasJoinedDraft: hasJoined)
             } catch {
