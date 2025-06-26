@@ -31,3 +31,4 @@
 "draftDetails.copiedBanner" = "Copied!";
 "draftDetails.participantsHeader" = "PARTICIPANTS";
 "draftDetails.startButton" = "START"; 
+"draftDetails.joinButton" = "JOIN"; 
