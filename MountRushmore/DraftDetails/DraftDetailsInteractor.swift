@@ -13,7 +13,7 @@ struct DraftDetailsDomainState {
     enum LoadingState {
         case idle
         case loading
-        case loaded(draftName: String, topic: String, link: String, participants: [String])
+        case loaded(draft: Draft)
     }
 }
 
@@ -21,6 +21,11 @@ struct DraftDetailsDomainState {
 /// It receives actions and produces a new domain state.
 struct DraftDetailsInteractor {
     
+    let repository: DraftDetailsRepository
+    
+    init(repository: DraftDetailsRepository = DraftDetailsRepository()) {
+        self.repository = repository
+    }
     
     /// This is the main Combine-based interaction point for the interactor.
     /// It transforms a stream of actions into a stream of states.
@@ -50,18 +55,15 @@ struct DraftDetailsInteractor {
     private func performAction(_ action: DraftDetailsDomainAction) async -> DraftDetailsDomainState {
         switch action {
         case .fetchDraftDetails(let draftId):
-            // In a real app, you would fetch details from a repository.
-            // For now, we'll return a sample state.
             print("Interactor received action: \(action) with draftId: \(draftId)")
-            // Simulate a network request
-            try? await Task.sleep(nanoseconds: 1_000_000_000)
-            let loadedState = DraftDetailsDomainState.LoadingState.loaded(
-                draftName: "My Awesome Rushmore V2",
-                topic: "Greatest NBA Players",
-                link: "https://example.com/draft/nba",
-                participants: ["LeBron James", "Michael Jordan", "Kareem Abdul-Jabbar", "Magic Johnson"]
-            )
-            return DraftDetailsDomainState(loadingState: loadedState)
+            do {
+                let draft = try await repository.getDraftDetails(draftId: draftId)
+                let loadedState = DraftDetailsDomainState.LoadingState.loaded(draft: draft)
+                return DraftDetailsDomainState(loadingState: loadedState)
+            } catch {
+                print("Failed to fetch draft details: \(error)")
+                return DraftDetailsDomainState(loadingState: .idle)
+            }
         }
     }
 } 
