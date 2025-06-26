@@ -9,6 +9,7 @@ enum DraftDetailsDomainAction {
 /// A struct representing the state of the application's domain.
 struct DraftDetailsDomainState {
     var loadingState: LoadingState = .idle
+    var hasJoinedDraft: Bool = false
 
     enum LoadingState {
         case idle
@@ -22,9 +23,14 @@ struct DraftDetailsDomainState {
 struct DraftDetailsInteractor {
     
     let repository: DraftDetailsRepository
+    let authState: AuthState
     
-    init(repository: DraftDetailsRepository = DraftDetailsRepository()) {
+    init(
+        repository: DraftDetailsRepository = DraftDetailsRepository(),
+        authState: AuthState = AuthState()
+    ) {
         self.repository = repository
+        self.authState = authState
     }
     
     /// This is the main Combine-based interaction point for the interactor.
@@ -59,7 +65,13 @@ struct DraftDetailsInteractor {
             do {
                 let draft = try await repository.getDraftDetails(draftId: draftId)
                 let loadedState = DraftDetailsDomainState.LoadingState.loaded(draft: draft)
-                return DraftDetailsDomainState(loadingState: loadedState)
+                guard let userId = authState.user?.uid else {
+                    return DraftDetailsDomainState(loadingState: loadedState, hasJoinedDraft: false)
+                }
+                
+                let hasJoined = draft.participants.contains { $0.userId == userId }
+                
+                return DraftDetailsDomainState(loadingState: loadedState, hasJoinedDraft: hasJoined)
             } catch {
                 print("Failed to fetch draft details: \(error)")
                 return DraftDetailsDomainState(loadingState: .idle)

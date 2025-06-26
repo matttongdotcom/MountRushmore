@@ -22,20 +22,43 @@ enum CreationStatus {
 /// It receives actions and produces a new domain state.
 struct CreateInteractor {
     let repository: CreateRepository
+    let authState: AuthState
 
-    init(repository: CreateRepository = CreateRepository()) {
+    init(
+        repository: CreateRepository = CreateRepository(),
+        authState: AuthState = AuthState()
+    ) {
         self.repository = repository
+        self.authState = authState
     }
 
     func interact(_ action: CreateDomainAction) async -> CreateDomainState {
         switch action {
         case .createDraft(let draftName, let draftTopic):
+            
+            guard let userId = authState.user?.uid else {
+                return CreateDomainState(creationStatus: .failure(CreateError.userNotLoggedIn))
+            }
+            
+            let creator = Creator(
+                name: authState.user?.email ?? "No email", // TODO: use authState.user?.displayName when change is made
+                userId: userId
+            )
+            
             do {
-                let draft = try await repository.createDraft(draftName: draftName, topic: draftTopic)
+                let draft = try await repository.createDraft(
+                    draftName: draftName,
+                    topic: draftTopic,
+                    creator: creator
+                )
                 return CreateDomainState(draftName: draftName, topic: draftTopic, creationStatus: .success(draft))
             } catch {
                 return CreateDomainState(draftName: draftName, topic: draftTopic, creationStatus: .failure(error))
             }
         }
     }
+}
+
+enum CreateError: Error {
+    case userNotLoggedIn
 } 

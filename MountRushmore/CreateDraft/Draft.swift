@@ -10,10 +10,16 @@ struct Draft: Decodable, Identifiable {
     let participants: [Participant]
     let picks: [Pick]
     let draftId: String
+    let creator: Creator
+}
+
+struct Creator: Codable, Hashable {
+    let name: String
+    let userId: String
 }
 
 struct Participant: Decodable, Hashable {
-    let id: String
+    let userId: String
     let name: String
 }
 struct Pick: Decodable, Hashable {} 

@@ -13,7 +13,7 @@ final class DraftDetailsViewModel: ObservableObject {
 
     init(
         initialState: DraftDetailsViewState = .initial,
-        interactor: DraftDetailsInteractor = DraftDetailsInteractor()
+        interactor: DraftDetailsInteractor
     ) {
         self.state = initialState
         self.interactor = interactor
@@ -71,7 +71,8 @@ final class DraftDetailsViewModel: ObservableObject {
                 topic: draft.topic,
                 link: "https://mountrushmore.app/draft/\(draft.id)",
                 participants: draft.participants.map { $0.name },
-                isLoading: false
+                isLoading: false,
+                hasJoinedDraft: domainState.hasJoinedDraft
             )
         }
     }
@@ -90,6 +91,7 @@ struct DraftDetailsViewState {
     var participants: [String] = []
     var ctaText: String = ""
     var isLoading: Bool = true
+    var hasJoinedDraft: Bool = false
     
     static var initial: DraftDetailsViewState {
         DraftDetailsViewState()

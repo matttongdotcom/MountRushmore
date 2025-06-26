@@ -12,7 +12,7 @@ class CreateViewModel: ObservableObject {
     private let viewEventSubject = PassthroughSubject<CreateViewEvent, Never>()
     private var cancellables = Set<AnyCancellable>()
 
-    init(interactor: CreateInteractor = CreateInteractor()) {
+    init(interactor: CreateInteractor) {
         self.interactor = interactor
         
         viewEventSubject

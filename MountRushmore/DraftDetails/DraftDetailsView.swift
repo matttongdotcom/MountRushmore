@@ -3,7 +3,7 @@ import SwiftUI
 // MARK: - View
 
 struct DraftDetailsView: View {
-    @StateObject private var viewModel = DraftDetailsViewModel()
+    @ObservedObject var viewModel: DraftDetailsViewModel
     @State private var justCopied: Bool = false
     let draftId: String
 
@@ -68,17 +68,31 @@ struct DraftDetailsView: View {
 
             Spacer()
 
-            // START Button
-            Button(action: {
-                // Action for the START button
-            }) {
-                Text("draftDetails.startButton")
-                    .fontWeight(.bold)
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
+            // CTA Button
+            if viewModel.state.hasJoinedDraft {
+                Button(action: {
+                    // Action for the START button
+                }) {
+                    Text("draftDetails.startButton")
+                        .fontWeight(.bold)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                }
+            } else {
+                Button(action: {
+                    // Action for the JOIN button
+                }) {
+                    Text("draftDetails.joinButton")
+                        .fontWeight(.bold)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.orange.opacity(0.8))
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                }
             }
         }
     }
@@ -100,6 +114,9 @@ struct DraftDetailsView: View {
 
 #Preview {
     NavigationView {
-        DraftDetailsView(draftId: "123")
+        let authState = AuthState()
+        let interactor = DraftDetailsInteractor(authState: authState)
+        let viewModel = DraftDetailsViewModel(interactor: interactor)
+        DraftDetailsView(viewModel: viewModel, draftId: "123")
     }
 } 
